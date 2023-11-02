@@ -1,8 +1,9 @@
 % Metódy inžinierskej práce
 
-\documentclass[10pt,twoside,slovak,a4paper]{coursepaper}
+\documentclass[10pt,twoside,a4paper]{article}
 
-\usepackage[slovak]{babel}
+
+\usepackage{pdfpages}
 %\usepackage[T1]{fontenc}
 \usepackage[IL2]{fontenc} % lepšia sadzba písmena Ľ než v T1
 \usepackage[utf8]{inputenc}
@@ -15,9 +16,9 @@
 
 \pagestyle{headings}
 
-\title{Názov\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2015/16, vedenie: Meno Priezvisko}} % meno a priezvisko vyučujúceho na cvičeniach
+\title{Overview and current state of semantic web search engines\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2015/16, vedenie: Meno Priezvisko}} % meno a priezvisko vyučujúceho na cvičeniach
 
-\author{Meno Priezvisko\\[2pt]
+\author{Amal Akhmadinurov\\[2pt]
 	{\small Slovenská technická univerzita v Bratislave}\\
 	{\small Fakulta informatiky a informačných technológií}\\
 	{\small \texttt{...@stuba.sk}}
@@ -33,95 +34,123 @@
 
 \begin{abstract}
 \ldots
+
+Semantic web search is one of the techniques of finding relievant content in the World Wide Web,  which based on understanding of the context and meaning of users requests.  This princip makes semantic search engines more suitable for using in the modern Internet.  This article will give an overview of existing semantic search engines,  their types, differences  and  current state of this technology.
+
 \end{abstract}
+\section{Introduction}
 
-\section{Test section}
-
-wuefhdwkejf
-
-\section{Úvod}
+Since the invention World Wide Web has become a tool,  through which  it is able to access an enormous amount of information.  One of the biggest problems that early users of the Internet encountered was the problem of  searching for relevant data among a number of sources.  That is why the first search engines were created in 1990s. 
 
 
-Motivujte čitateľa a vysvetlite, o čom píšete. Úvod sa väčšinou nedelí na časti.
+These engines used rather primitive algorithms such as basic keyword matching techniques and limited web indexing. \cite{efe}
 
-Uveďte explicitne štruktúru článku. Tu je nejaký príklad.
-Základný problém, ktorý bol naznačený v úvode, je podrobnejšie vysvetlený v časti~\ref{nejaka}.
-Dôležité súvislosti sú uvedené v častiach~\ref{dolezita} a~\ref{dolezitejsia}.
-Záverečné poznámky prináša časť~\ref{zaver}.
+The development of web search engines continued during 1990s. One the most significant events in this period of time was the introduction of Google PageRank algorithm, which enhanced a process of web search by analysis of importance of pages through the number of other websites that linked on them.\cite{hist} \cite{efe}
+
+As search engines evolved, they started to take account of user preferences, search history, and contextual information, which resulted in better quality of search and better client satisfaction.\cite{efe}
+
+One of the results of this development are semantic search engines, that are supposed to enhance web search by  recognising context of the query and meaning of the whole query, which increases the precision of the results.\cite{intr}
 
 
 
-\section{Nejaká časť} \label{nejaka}
-
-Z obr.~\ref{f:rozhod} je všetko jasné. 
-
-\begin{figure*}[tbh]
-\centering
-%\includegraphics[scale=1.0]{diagram.pdf}
-Aj text môže byť prezentovaný ako obrázok. Stane sa z neho označný plávajúci objekt. Po vytvorení diagramu zrušte znak \texttt{\%} pred príkazom \verb|\includegraphics| označte tento riadok ako komentár (tiež pomocou znaku \texttt{\%}).
-\caption{Rozhodujúci argument.}
-\label{f:rozhod}
-\end{figure*}
-
-
-
-\section{Iná časť} \label{ina}
-
-Základným problémom je teda\ldots{} Najprv sa pozrieme na nejaké vysvetlenie (časť~\ref{ina:nejake}), a potom na ešte nejaké (časť~\ref{ina:nejake}).\footnote{Niekedy môžete potrebovať aj poznámku pod čiarou.}
-
-Môže sa zdať, že problém vlastne nejestvuje\cite{Coplien:MPD}, ale bolo dokázané, že to tak nie je~\cite{Czarnecki:Staged, Czarnecki:Progress}. Napriek tomu, aj dnes na webe narazíme na všelijaké pochybné názory\cite{PLP-Framework}. Dôležité veci možno \emph{zdôrazniť kurzívou}.
-
-
-\subsection{Nejaké vysvetlenie} \label{ina:nejake}
-
-Niekedy treba uviesť zoznam:
-
+\section{Basic principles of semantic web search engines}
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}
+    \includegraphics[width=\linewidth]{s1.png}
+    \caption{Traditional search engine}
+  \end{subfigure}
+  \begin{subfigure}
+    \includegraphics[width=\linewidth]{1.png}
+    \caption{Semantic search engine}
+  \end{subfigure}
+  \caption{The same request using keyword-based search engine and using semantic search engine }
+  \label{fig:coffee}
+\end{figure}
+There are some major differences between traditional search engines and semantic search engines:
+Traditional search engines:
 \begin{itemize}
-\item jedna vec
-\item druhá vec
-	\begin{itemize}
-	\item x
-	\item y
-	\end{itemize}
+    \item Entry is key word
+    \item Lack of knowledge of terms
+    \item Do not take account of stop words
+    \item Unable to handle long queries
 \end{itemize}
 
-Ten istý zoznam, len číslovaný:
+Semantic search engines:
 
+\begin{itemize}
+    \item Entry is a question
+    \item Knowledge of terms
+    \item Take into account of stop words
+    \item Able to handle long queries
+\end{itemize}\cite{intr}
+
+
+
+
+
+
+
+The vast majority of information in the Internet is currently published as text, which can be read by humans, but is not suitable for machine to read, because it cannot see the semantic meaning and the context. In addition to this, the volume of data in the Internet has increased drastically in past few years. That is why traditional-keyword based search engines are losing their effectiveness.
+
+The main idea behind semantic search engines is to provide more relevant search results by analysis of intentions and contextual meaning of the user's query.
+
+By this moment, several semantic search engines had been created, that use different approaches and are based on various user-cases. In spite of this fact , all of them share the same basic principles and architecture.
+
+
+
+A typical semantic search engine consists of the following components:  Ontology development,  Ontology Crawler,  Ontology Annotator,  Web crawler,  Performing semantic search, Query builder, and (7) Query pre-processor. 
+
+Web crawler (or "robot") is special type of program, that explores the Internet automatically to gather information for future indexing. Web crawlers are also used in traditional search engines.
+
+In mentioned architecture,  ontology development,  ontology Crawler,  ontology annotator are components responsible for creating and processing so called ontologies.Ontology can be described as ... 
+
+
+
+\cite{intonw}
+
+
+
+A typical process model of semantic search engine consists of the following steps:
 \begin{enumerate}
-\item jedna vec
-\item druhá vec
-	\begin{enumerate}
-	\item x
-	\item y
-	\end{enumerate}
+    \item Crawling, which is, generally, a process performed by a crawler, that collects documents for future indexing and analysis like do crawlers of traditional search engines.
+    \item Indexing. Concerning implementation, princip of this step depends on particular search engine. On the whole, at this stage analysis of vocabulary and relationship between resources is done.
+    \item Storing. Indexed documents are stored in a knowledge base in the form graphs.
+    \item Querying. After previous stages processed information can accessed through query. Unlike traditional search engines that return documents, semantic search engines' result can be a representation of an entity (parts of web pages, people, devices and so on). The main difference from traditional search engines is ability to analyze the context of the query to give better results
+    \item Ranking. Generally, this step can be described as evaluation of semantic and statistical metrics to find appropriate result for user's query
+    \item Search interface. This part is supposed to be  a way to deliver search functionality for user. It can an API  or any kind of interface, that let user get access to the search engine.
+
+    
 \end{enumerate}
 
+\cite{intonw}
 
-\subsection{Ešte nejaké vysvetlenie} \label{ina:este}
+It is also important to notice that semantic engines  use so called ontologies. Ontology can be described as ...
 
-\paragraph{Veľmi dôležitá poznámka.}
-Niekedy je potrebné nadpisom označiť odsek. Text pokračuje hneď za nadpisom.
-
-
-
-\section{Dôležitá časť} \label{dolezita}
+That is why
 
 
-
-
-\section{Ešte dôležitejšia časť} \label{dolezitejsia}
+\section{Current state of technology and comparison of different search engines}
 
 
 
 
-\section{Záver} \label{zaver} % prípadne iný variant názvu
-\include{novy}
 
 
-%\acknowledgement{Ak niekomu chcete poďakovať\ldots}
 
 
-% týmto sa generuje zoznam literatúry z obsahu súboru literatura.bib podľa toho, na čo sa v článku odkazujete
-\bibliography{literatura}
-\bibliographystyle{alpha} % prípadne alpha, abbrv alebo hociktorý iný
+
+
+
+\section{Conclusion}
+
+
+\bibliographystyle{plain} 
+
+\bibliography{literatura.bib}
+
+
+
+
+
 \end{document}
